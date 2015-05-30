@@ -10,9 +10,19 @@ The `critical` binary must be available on the system.
 ### Usage
 
 
+```
+# Gemfile
+
+gem "middleman-critical", "~>0.0.2"
+
+```
+
+`bundle install`
+
 ```ruby
 # config.rb
 
-activate :critical, :binary => '/usr/local/bin/critical'  # binary defaults to 'critical'
+configure :build do
+  activate :critical, :binary => '/usr/local/bin/critical'  # binary defaults to 'critical'
 
 ```
