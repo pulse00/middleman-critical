@@ -5,6 +5,8 @@ module Middleman
   class CriticalExtension < Extension
 
     option :binary, 'critical', 'The critical binary to use'
+    option :extract, false, 'Extract inlined styles from referenced stylesheets'
+    option :minify, false, 'Minify critical-path CSS when inlining'
 
     def initialize(app, options_hash={}, &block)
       super
@@ -26,7 +28,7 @@ module Middleman
       Dir.glob(htmlDir) do |file|
         assetPath = rootPath + File::SEPARATOR + file
         file.slice! buildDir + File::SEPARATOR
-        %x(#{options.binary} #{assetPath} --base #{buildDir} --htmlTarget #{file} --extract --inline)
+        %x(#{options.binary} #{assetPath} --base #{buildDir} --htmlTarget #{file} --inline #{'--extract' if options.extract} #{'--minify' if options.minify})
       end
 
     end

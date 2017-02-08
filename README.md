@@ -26,3 +26,10 @@ configure :build do
   activate :critical, :binary => '/usr/local/bin/critical'  # binary defaults to 'critical'
 
 ```
+#### Options
+```
+:binary  => 'critical'  # The critical binary to use
+:extract => false  # Extract inlined styles from referenced stylesheets
+:minify  => false  # Minify critical-path CSS when inlining
+```
+
